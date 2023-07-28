@@ -5,6 +5,7 @@ import cartlogo from "../images/cartlogo.png";
 import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
+  const {length, searchTerm, setSearchTerm} = props;
   return (
     <>
       <div className="nav">
@@ -12,6 +13,11 @@ const NavBar = (props) => {
           <img className="icons" id= 'logo'src={logo} alt=""></img>
           <input
             type="text"
+            value={searchTerm}
+            onChange={e => {
+              console.log("changing to "+e.target.value)
+              setSearchTerm(e.target.value)
+            }}
             className="search-box"
             placeholder="search"
           ></input>

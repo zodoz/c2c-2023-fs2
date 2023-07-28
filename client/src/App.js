@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styling/App.css";
 import "./styling/nav.css";
 import "./styling/footer.css";
@@ -25,11 +25,12 @@ import { NavBar } from "./components/index.js";
 import { Footer } from "./components/index.js";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <>
       <BrowserRouter>
         <div className="main">
-          <NavBar />
+          <NavBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <Footer />
         </div>
         <Routes>
@@ -40,7 +41,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/shopping" element={<Shopping />} />
+          <Route path="/shopping" element={<Shopping searchTerm={searchTerm} />} />
         </Routes>
       </BrowserRouter>
     </>
